@@ -32,8 +32,8 @@ const LandingPage = styled.div`
 
 const HeaderContent = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column; /* Changed to column */
+  align-items: center; /* Center align items */
   justify-content: center;
   max-width: 1200px;
   width: 100%;
@@ -41,10 +41,11 @@ const HeaderContent = styled.div`
 `;
 
 const TextSection = styled.div`
-  flex: 1;
-  margin-right: 20px;
-  text-align: left;
-  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align text */
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 const Name = styled.h1`
@@ -74,6 +75,7 @@ const ProfilePicture = styled.img`
   border-radius: 10px;
   border: 5px solid #FFDBBB;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Margin below picture */
 `;
 
 const HighlightIntro = styled.p`
@@ -117,38 +119,38 @@ const ResumeButton = styled.a`
 
 const MainContent = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: row;
+  flex-direction: column; /* Stack graph and info section */
   background: #f6e1d3;
-  padding: 10px; /* Padding on all sides */
+  padding: 10px;
   margin-top: -20px; /* Move content up */
   overflow: hidden;
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row; /* For larger screens, use row layout */
   }
 `;
 
-
-
 const GraphContainer = styled.div`
-  width: 30vw;
-  height: 80vh;
+  width: 100%;
+  height: 60vh; /* Adjust height as needed */
   position: relative;
-  margin-top: 0; /* Ensure no additional margin */
+  margin-bottom: 20px; /* Margin below graph */
+  @media (min-width: 768px) {
+    width: 30vw;
+    height: 80vh;
+    margin-bottom: 0; /* Remove margin on larger screens */
+  }
 `;
 
 const InfoContainer = styled.div`
-  width: 70vw;
-  min-height: 90vh; /* Increased minimum height */
-  padding: 10px; /* Padding */
+  width: 100%;
+  min-height: 40vh; /* Ensure minimum height */
+  padding: 10px;
   background-color: #f6e1d3;
   overflow-y: auto;
-  margin-top: 0; /* Ensure no additional margin */
-  @media (max-width: 768px) {
-    width: 100vw;
+  @media (min-width: 768px) {
+    width: 70vw;
   }
 `;
-
 
 const RotateInstruction = styled.p`
   position: absolute;
@@ -298,7 +300,6 @@ const sections = [
   }
   // Add more sections as needed
 ];
-
 function App() {
   const [selectedNode, setSelectedNode] = useState(null);
 
@@ -310,6 +311,7 @@ function App() {
       <GlobalStyle />
       <LandingPage>
         <HeaderContent>
+          <ProfilePicture src="/images/profile.jpeg" alt="Profile Picture" />
           <TextSection>
             <Name>Anmol Munnolli</Name>
             <IntroText>Data Architecture and Engineering | Machine Learning</IntroText>
@@ -323,7 +325,6 @@ function App() {
             </SocialLinks>
             <ResumeButton href="https://drive.google.com/file/d/1kiiGT8DzP3exYd46zBqFLnaafVYEQ3qW/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</ResumeButton> {/* Resume Button */}
           </TextSection>
-          <ProfilePicture src="/images/profile.jpeg" alt="Profile Picture" />
         </HeaderContent>
       </LandingPage>
       <MainContent>
