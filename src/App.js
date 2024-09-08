@@ -122,10 +122,11 @@ const MainContent = styled.div`
   flex-direction: column; /* Stack graph and info section */
   background: #f6e1d3;
   padding: 10px;
-  margin-top: -20px; /* Move content up */
-  overflow: hidden;
+  overflow: auto; /* Make the main content scrollable */
+  height: 100vh; /* Ensure the main content takes the full viewport height */
   @media (min-width: 768px) {
     flex-direction: row; /* For larger screens, use row layout */
+    overflow: hidden; /* Remove scroll on larger screens */
   }
 `;
 
@@ -199,6 +200,13 @@ const sections = [
   },
   {
     title: 'Projects',
+    description: 'E-commerce event logs analytics pipeline',
+    image: '',
+    details: ['Built a scalable analytics pipeline for e-commerce event logs using Snowflake and Apache Airflow, significantly enhancing data processing speed and enabling real-time insights to drive business decisions.','Developed and optimized 4 data models in dbt Core and dbt Cloud- Session Analysis, Retention Analysis, Traffic Revenue, and User Cart Value, to analyze user behavior and revenue, generating over 20 actionable insights and achieving 98% data accuracy. Integrated data into a Tableau dashboard for comprehensive visualization of key metrics.'],
+    github: 'https://github.com/anmolmunnolli/website_logs_analysis_pipeline.git'
+  },
+  {
+    title: 'Projects',
     description: 'Crop Yield Estimation with Real-Time Object Detection and regression analysis using Drone footage and web Interface',
     image: '',
     details: ['Sponsored by KSCST, Indian Institute of Science, Bangalore', 'To accurately predict crop yield in a given land using the drone footage and deep learning techniques at real-time.', 'Provides enhanced results with Faster-RCNN object detection and regression analysis'],
@@ -236,7 +244,13 @@ const sections = [
     title: 'Contact Info',
     description: 'Email',
     image: '',
-    details: ['anmolmunnolli@gmail.com'],
+    details: ['amunnol@iu.edu','anmolmunnolli@gmail.com'],
+  },
+  {
+    title: 'Contact Info',
+    description: 'Phone',
+    image: '',
+    details: ['+1 (930) 215-3025'],
   },
   {
     title: 'Contact Info',
@@ -271,6 +285,48 @@ const sections = [
   {
     title: 'Skills',
     description: 'Extract, Load and Transform',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'Snowflake',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'dbt core',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'dbt cloud',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'Apache airflow',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'Docker',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'Databricks',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
+    description: 'Tableau',
     image: '',
     details: ['Intermediate']
   },
@@ -321,9 +377,10 @@ function App() {
             <SocialLinks>
               <a href="https://www.linkedin.com/in/anmolmunnolli/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://github.com/anmolmunnolli" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a>amunnol@iu.edu</a>
               <a>anmolmunnolli@gmail.com</a>
             </SocialLinks>
-            <ResumeButton href="https://drive.google.com/file/d/1kiiGT8DzP3exYd46zBqFLnaafVYEQ3qW/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</ResumeButton> {/* Resume Button */}
+            <ResumeButton href="https://drive.google.com/file/d/1v2rzUwyRFwf5IMY1GDtcIP31sAZvbcxf/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</ResumeButton> {/* Resume Button */}
           </TextSection>
         </HeaderContent>
       </LandingPage>
