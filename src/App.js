@@ -23,10 +23,10 @@ const LandingPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Changed from height */
   background: #f6e1d3;
   position: relative;
-  padding: 10px;
+  padding: 0px 5px 0px 0px; /* Add top padding */
   overflow: hidden;
 `;
 
@@ -38,6 +38,8 @@ const HeaderContent = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+flex: 1;
+min-width: 320px;
 `;
 
 const TextSection = styled.div`
@@ -50,7 +52,7 @@ const TextSection = styled.div`
 
 const Name = styled.h1`
   font-family: 'Boulder', sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #333;
   margin: 0;
   transition: transform 0.3s ease;
@@ -60,8 +62,8 @@ const Name = styled.h1`
 `;
 
 const IntroText = styled.p`
-  font-size: 1rem;
-  color: #666;
+  font-size: 0.82rem;
+  color: #000;
   margin-top: 10px;
   transition: transform 0.3s ease;
   &:hover {
@@ -159,11 +161,38 @@ const RotateInstruction = styled.p`
   left: 50%;
   transform: translateX(-50%);
   font-size: 1rem;
-  color: #666;
+  color: #000;
   background: rgba(255, 255, 255, 0.7);
   padding: 5px 10px;
   border-radius: 5px;
 `;
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+`;
+
+
+
+const AboutSection = styled.div`
+  flex: 1;
+  min-width: 320px;
+`;
+
+const AboutText = styled.p`
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #000;
+  white-space: pre-line;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 10px;
+`;
+
+
 
 
 // Sections data
@@ -172,7 +201,7 @@ const sections = [
     title: 'Education',
     description: 'Indiana University, Bloomington, USA',
     image: '/images/iu.png',
-    details: ['Masters of Science - Data Science', 'Graduation: May 2026', 'Relevant Coursework:', 'Introduction to Statistics', 'Advanced Database Concepts', 'Applied machine learning']
+    details: ['Masters of Science - Data Science','(Specialization: Big Data Systems)','GPA: 3.95', 'Graduation: May 2026', 'Relevant Coursework:', 'Introduction to Statistics', 'Advanced Database Concepts', 'Applied machine learning', 'Applied Database Technologies','Data Mining','Information Visualization','Big Data Applications','Statistical Analysis for Effective Decision making','Introduction to Intelligent Systems']
   },
   {
     title: 'Education',
@@ -182,21 +211,40 @@ const sections = [
   },
   {
     title: 'Work Experience',
+    description: 'Data Science Club',
+    image: '/images/dsc.png',
+    details: ['Technical Lead', 'October 2024 - Present', 'Hosted guest talks on data operations, helping peers understand the fundamentals and best practices in building scalable data solutions','Conducted the Luddy hackathon for students and professionals, eager to solve real world problems with cutting edge tools.','Collaborated with events and marketing teams, to deliver out-of-classroom learning and skill development.']
+  },
+  {
+    title: 'Work Experience',
     description: 'ergLocale',
     image: '/images/erglocale.png',
-    details: ['Data Engineer', 'April 2024 - July 2024', 'Orchestrated a near-real-time data funnel to accumulate event logs in a data lake.','Implemented a custom live dashboard using Streamlit, ensuring optimal query performance and cost-saving measures.']
+    details: ['Data Engineer', 'April 2024 - July 2024', "Built real-time ETL pipeline using Kafka & Airflow to ingest 5000 EV sensor logs/min into Snowflake for analytics.",
+    "Designed PySpark DAGs to impute ~8% missing data; optimized with partitioning & parallelism, reducing processing time by 47%.",
+    "Created Snowflake star schema & SQL procedures for KPIs; developed Tableau dashboards for real-time operations insights.",
+    "Orchestrated ETL pipeline with AWS Glue, EMR & Fivetran to ingest EV charging station data every 5 mins into MongoDB & S3.",
+    "Built S3-based multi-tier data lake (Bronze, Silver, Gold) handling 2M+ records; ensured MongoDB consistency.",
+    "Streamlined PySpark transformations on EMR; stored cleaned Parquet data in Silver layer for analytics.",
+    "Computed KPIs in Gold layer & integrated with ergOS API to show real-time charger availability in mobile app."]
   },
   {
     title: 'Work Experience',
     description: 'Powerplay',
     image: '/images/powerplay.png',
-    details: ['Data Engineer', 'June 2023 - March 2024', 'Collaborative efforts with marketing team to provide scaled leads','Data pipelines and data lakes on AWS, GCP']
+    details: ['Data Engineer', 'June 2023 - March 2024',     "Built a Python-Selenium scraper with rotating proxies to collect 200K+ leads from 10+ sources, reducing CAC by $58K/year.",
+      "Designed scalable AWS architecture with source-based partitioning & version control for centralized lead data management.",
+      "Engineered PySpark workflows on EMR for cleaning, normalization, deduplication & phone validation, boosting accuracy by 20%.",
+      "Integrated cleaned data with Meta, Google Ads & WhatsApp APIs for targeted marketing campaigns.",
+      "Developed financial pipeline using BigQuery, Segment & PySpark to integrate transactions from Zoho & Razorpay APIs.",
+      "Optimized GCS storage with Parquet + GZIP & partitioning by source/date/lead ID in the silver layer for faster queries.",
+      "Calculated revenue & lead expenses in gold layer; visualized MRR, ARR & retention metrics in Mixpanel dashboard."]
   },
   {
     title: 'Work Experience',
     description: 'MavenAI Technologies',
     image: '/images/mavenAI.png',
-    details: ['Machine Learning Engineer', 'September 2021 - April 2022', 'Worked on GANs and Computer Vision Projects, trained on AWS instances.','Performed Data Preprocessing, Transformation and Feature Engineering']
+    details: ['Machine Learning Engineer', 'September 2021 - April 2022',     "Enhanced ML app to imprint tattoo patterns on guitars using data preprocessing, XGANs & neural style transfer; achieved 0.83 precision.",
+      "Applied NeRF to convert 360° video into high-res 3D models with 34 dB PSNR, enabling photorealistic reconstructions for analysis."]
   },
   {
     title: 'Projects',
@@ -204,6 +252,27 @@ const sections = [
     image: '',
     details: ['Built a scalable analytics pipeline for e-commerce event logs using Snowflake and Apache Airflow, significantly enhancing data processing speed and enabling real-time insights to drive business decisions.','Developed and optimized 4 data models in dbt Core and dbt Cloud- Session Analysis, Retention Analysis, Traffic Revenue, and User Cart Value, to analyze user behavior and revenue, generating over 20 actionable insights and achieving 98% data accuracy. Integrated data into a Tableau dashboard for comprehensive visualization of key metrics.'],
     github: 'https://github.com/anmolmunnolli/website_logs_analysis_pipeline.git'
+  },
+  {
+    title: 'Projects',
+    description: 'Nomads Nest - Agentic Travel Buddy',
+    image: '',
+    details: ['Built an end to end travel planner tool using Multi Agentic System (MAS) to assist users to select, plan and manage their travel destinations.','Integrated multiple AI Agents like place_recommender, User_personality_interpreter, weather_forecaster, itenerary_generator, fact_checker, bag_packing_assistant which implemented AI functionalities like text summarisation, Recommendation systems, forecasting and sentiment analysis.'],
+    github: 'https://github.com/madhumitha-gv/Agent-Alchemysts'
+  },
+  {
+    title: 'Projects',
+    description: 'Startup buddy - Startup Decision Support System',
+    image: '',
+    details: ['- Developed a robust data solution to track KPI performance for startups, personalized to its industry.','Enabled comparisons between industry specific KPI performances fueled by LLMs like Llama and BERT.','Graphed forecasted results and statistics for detailed coverage of KPIs tracked.','Added sentiment analysis and time series forecasting to drive better business decision making'],
+    github: 'https://github.com/anmolmunnolli/startup_buddy.git'
+  },
+  {
+    title: 'Projects',
+    description: 'clinical data analysis of a pharmaceutical company',
+    image: '',
+    details: ['Engineered a robust and scalable data pipeline to ingest clinical trial data and perform comprehensive analysis at regular intervals.','Implemented a Power BI dashboard that integrates and visualizes key metrics, including sales performance, customer analytics, operational efficiency, and financial analysis. This resulted in improved decision-making, a 15% increase in forecast accuracy, a 20% enhancement in targeted marketing, a 10% reduction in operational costs, and more effective budget planning.'],
+    github: 'https://github.com/anmolmunnolli/clinical_data_analysis'
   },
   {
     title: 'Projects',
@@ -231,7 +300,7 @@ const sections = [
     description: 'Microsoft Certified: Azure AI Fundamentals',
     image: '',
     details: ['December 2022 - Present'],
-    github: 'https://www.credly.com/earner/earned/badge/1d7c9461-20e6-40c4-a552-4878c680fce5'
+    github: 'https://www.credly.com/badges/1d7c9461-20e6-40c4-a552-4878c680fce5/public_url'
   },
   {
     title: 'Certifications',
@@ -239,6 +308,27 @@ const sections = [
     image: '',
     details: ['December 2022 - Present'],
     github: 'https://www.credly.com/badges/16bebf6c-1a6b-417c-9542-b954af196f0d'
+  },
+  {
+    title: 'Certifications',
+    description: 'Introduction to Snowflake',
+    image: '',
+    details: ['February 2025 - Present'],
+    github: 'https://drive.google.com/file/d/1D0y81hMX0S4uljsa5S_ZHFzOKp1vmsOS/view?usp=sharing'
+  },
+  {
+    title: 'Certifications',
+    description: 'Introduction to SQL',
+    image: '',
+    details: ['January 2025 - Present'],
+    github: 'https://drive.google.com/file/d/13rbXaoawdkEnuMKIEBiG6F7g-AoSYh9n/view?usp=sharing'
+  },
+  {
+    title: 'Certifications',
+    description: 'Joining data in SQL',
+    image: '',
+    details: ['February 2025 - Present'],
+    github: 'https://drive.google.com/file/d/1WKYxnVBGUix1czUaHdeFL6V7iYUxKCEJ/view?usp=sharing'
   },
   {
     title: 'Contact Info',
@@ -332,6 +422,12 @@ const sections = [
   },
   {
     title: 'Skills',
+    description: 'Power BI',
+    image: '',
+    details: ['Intermediate']
+  },
+  {
+    title: 'Skills',
     description: 'Machine learning',
     image: '',
     details: ['Intermediate']
@@ -365,25 +461,58 @@ function App() {
   return (
     <AppContainer>
       <GlobalStyle />
-      <LandingPage>
-        <HeaderContent>
-          <ProfilePicture src="/images/profile.jpeg" alt="Profile Picture" />
-          <TextSection>
-            <Name>Anmol Munnolli</Name>
-            <IntroText>Data Architecture and Engineering | Machine Learning</IntroText>
-            <IntroText>Masters of Science - Data Science at Indiana University, USA<br />Class of 2026</IntroText>
-            <IntroText>Delivering robust data-driven solutions to manifest better decision making.<br />
-              Passionate about leveraging data to drive innovation and business growth.</IntroText>
-            <SocialLinks>
-              <a href="https://www.linkedin.com/in/anmolmunnolli/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://github.com/anmolmunnolli" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a>amunnol@iu.edu</a>
-              <a>anmolmunnolli@gmail.com</a>
-            </SocialLinks>
-            <ResumeButton href="https://drive.google.com/file/d/1v2rzUwyRFwf5IMY1GDtcIP31sAZvbcxf/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</ResumeButton> {/* Resume Button */}
-          </TextSection>
-        </HeaderContent>
-      </LandingPage>
+        <LandingPage>
+          <FlexContainer>
+            {/* LEFT SIDE */}
+            <HeaderContent>
+              <ProfilePicture src="/images/profile.jpeg" alt="Profile Picture" />
+              <TextSection>
+                <Name>Anmol Munnolli</Name>
+                <IntroText>Data Engineering and analytics | Machine Learning</IntroText>
+                <IntroText>
+                  Masters of Science - Data Science (Specialization: Big Data Systems) <br />
+                  Indiana University Bloomington, USA (Graduating: Summer 2026)
+                </IntroText>
+                <IntroText>
+                  Data Science graduate student with over two years of experience in building data pipelines seeking opportunities in a fast-paced startup.
+                </IntroText>
+                <SocialLinks>
+                  <a href="https://www.linkedin.com/in/anmolmunnolli/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <a href="https://github.com/anmolmunnolli" target="_blank" rel="noopener noreferrer">Github</a>
+                  <a>amunnol@iu.edu</a>
+                  <a>+1(930)2153025</a>
+                </SocialLinks>
+                <ResumeButton href="https://drive.google.com/file/d/1ALuKg0oVuBjAXjlZ0j3i-5OgCG7Nq2vI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  Resume
+                </ResumeButton>
+              </TextSection>
+            </HeaderContent>
+
+            {/* RIGHT SIDE */}
+            <AboutSection>
+              <AboutText>
+                🚀 As a Data Science graduate student with 2+ years of experience in data engineering, I specialize in building scalable pipelines that transform raw data into real-time insights. From electric vehicles to finance and construction tech, I’ve delivered systems that drive business outcomes.
+
+                {"\n\n"}🤖 What value do I bring?
+                {"\n"}I design robust, production-grade data workflows that improve processing speed, reduce costs, and enable better decision-making.
+
+                {"\n\n"}🤖 What problems have I solved?
+                {"\n"}I’ve built real-time pipelines for EV telemetry, automated lead gen systems saving $58K/year, and financial data lakes driving KPI visibility.
+
+                {"\n\n"}🤖 What tools do I use?
+                {"\n"}Proficient in PySpark, Kafka, Airflow, Snowflake, dbt, AWS, GCP, and BI tools like Tableau & Power BI.
+
+                {"\n\n"}🤖 What sets me apart?
+                {"\n"}I pair engineering rigor with product thinking—focusing on clean architecture, reusability, and business-aligned outcomes.
+
+                {"\n\n"}🤖 How do I collaborate?
+                {"\n"}As Technical Head of IU’s Data Science Club, I mentor peers and lead hands-on sessions solving practical data challenges.
+
+                {"\n\n"}I’m currently seeking Data Science Summer Internship and Co-op opportunities where I can contribute to impactful projects and continue learning.
+              </AboutText>
+            </AboutSection>
+          </FlexContainer>
+        </LandingPage>
       <MainContent>
         <GraphContainer>
           <Canvas>

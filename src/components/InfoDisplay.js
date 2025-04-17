@@ -29,7 +29,7 @@ const CardHeading = styled.div`
 const CardContent = styled.div`
   width: 100%;
   font-size: 14px;
-  color: #555;
+  color: #000;
   text-align: center;
 `;
 
@@ -45,7 +45,7 @@ const DetailsList = styled.ul`
   padding: 0;
   margin: 0;
   font-size: 14px;
-  color: #444;
+  color: #000;
 `;
 
 const DetailsListItem = styled.li`
