@@ -9,9 +9,11 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "npm": "^11.19.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "start": "^5.1.0",
     "styled-components": "^6.1.12",
     "three": "^0.167.0",
     "web-vitals": "^2.1.4"
@@ -22,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b gh-pages"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +46,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7"
   }
