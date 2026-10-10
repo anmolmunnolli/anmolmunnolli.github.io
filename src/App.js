@@ -650,7 +650,7 @@ function AboutTab() {
           </Tagline>
           <CTARow>
             <PrimaryBtn
-              href="https://drive.google.com/file/d/1ALuKg0oVuBjAXjlZ0j3i-5OgCG7Nq2vI/view?usp=sharing"
+              href="https://drive.google.com/file/d/1lQW8fOOoyh1v4MORSJjcWvuU5O9lHgbA/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
