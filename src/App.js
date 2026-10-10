@@ -718,7 +718,7 @@ function WorkTab() {
   return (
     <Section>
       <SectionHead>
-        <SectionEyebrow>Experience — 3+ years</SectionEyebrow>
+        <SectionEyebrow>Experience — 5+ years</SectionEyebrow>
         <SectionTitle>Work</SectionTitle>
       </SectionHead>
       {WORK.map(w => (
